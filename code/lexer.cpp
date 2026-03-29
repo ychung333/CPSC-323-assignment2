@@ -8,19 +8,10 @@ using namespace std;
 
 // Removed token struct as it was already defined in lexer.h
 
-const unordered_set<string> KEYWORDS =
-{
-    // data types
-    "integer", "boolean", "real",
-
-    // control / structure
-    "function", "if", "otherwise", "fi", "while", "return",
-
-    // IO
-    "read", "write",
-
-    // boolean literals
-    "true", "false"
+const unordered_set<string> KEYWORDS = 
+{ 
+    // using an unordered_set for quick lookup times when checking to see if a word in and because order does not matter a keyword
+    "integer", "if", "otherwise", "fi", "while", "return", "read", "write", "boolean", "real", "true", "false"
 };
 
 Lexer::Lexer(ifstream& inputFile) : fin(inputFile) 
