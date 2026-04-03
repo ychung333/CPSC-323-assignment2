@@ -103,16 +103,66 @@ void Parser::OptFunctionDefinitions() {
         Empty();
     }
 }
-void Parser::FunctionDefinitions() {}
-void Parser::Function() {}
+void Parser::FunctionDefinitions() {
+    printProduction("<Function Definitions> -> <Function> <Function Definitions> | <Empty>");
+    if (currentToken.lexeme == "function") {
+        Function();
+        FunctionDefinitions();
+    } else {
+        Empty();
+    }
+}
+void Parser::Function() {
+    printProduction("<Function> -> function <Qualifier> identifier ( <Opt Parameter List> ) <Body>");
+    match("function");
+    Qualifier();
+    matchType("identifier");
+    match("(");
+    OptParameterList();
+    match(")");
+    Body();
+}
 void Parser::OptParameterList() {}
 void Parser::ParameterList() {}
 void Parser::Parameter() {}
-void Parser::Qualifier() {}
-void Parser::Body() {}
-void Parser::OptDeclarationList() {}
-void Parser::DeclarationList() {}
-void Parser::Declaration() {}
+void Parser::Qualifier() {
+    printProduction("<Qualifier> -> integer | boolean | real");
+    if (currentToken.lexeme == "integer" ||
+        currentToken.lexeme == "boolean" ||
+        currentToken.lexeme == "real") {
+            match(currentToken.lexeme);
+        } else {
+            error("Expected type qualifier (integer, boolean, or real)");
+        }
+}
+void Parser::Body() {
+    printProduction("<Body> -> <Compound>");
+    Compound();
+}
+void Parser::OptDeclarationList() {
+    printProduction("<Opt Declaration List> -> <Declaration List> | <Empty>");
+    if (currentToken.lexeme == "integer" ||
+        currentToken.lexeme == "boolean" ||
+        currentToken.lexeme == "real") {
+            DeclarationList();
+        } else {
+            Empty();
+        }
+}
+void Parser::DeclarationList() {
+    printProduction("<Declaration List> -> <Declaration> <Declaration List> | <Empty>");
+    while (currentToken.lexeme == "integer" ||
+           currentToken.lexeme == "boolean" ||
+           currentToken.lexeme == "real") {
+            Declaration();
+           }
+}
+void Parser::Declaration() {
+    printProduction("<Declaration> -> <Qualifier> <IDs> ;");
+    Qualifier();
+    IDs();
+    match(";");
+}
 void Parser::IDs() {
     printProduction("<IDs> -> identifier <More IDs>");
     matchType("identifier");
