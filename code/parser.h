@@ -52,6 +52,7 @@ private:
     void Term();
     void TermPrime();
     void Factor();
+    void FactorPrime();
     void Primary();
     void Empty();
 
