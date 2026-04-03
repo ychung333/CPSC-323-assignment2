@@ -122,7 +122,14 @@ void Parser::Function() {
     match(")");
     Body();
 }
-void Parser::OptParameterList() {}
+void Parser::OptParameterList() {
+    printProduction("<Opt Parameter List> -> <Parameter List> | <Empty>");
+    if (currentToken.type == "identifier") {
+        ParameterList();
+    } else {
+        Empty();
+    }
+}
 void Parser::ParameterList() {
     printProduction("<ParameterList> -> <Parameter> | <Parameter> , <ParameterList>");
     
@@ -149,14 +156,37 @@ void Parser::Qualifier() {
         currentToken.lexeme == "real") {
             match(currentToken.lexeme);
         } else {
-            error("Expected the current token to be either an integer, boolean, or real");
+            error("Expected type qualifier (integer, boolean, or real)");
         }
-
 }
-void Parser::Body() {}
-void Parser::OptDeclarationList() {}
-void Parser::DeclarationList() {}
-void Parser::Declaration() {}
+void Parser::Body() {
+    printProduction("<Body> -> <Compound>");
+    Compound();
+}
+void Parser::OptDeclarationList() {
+    printProduction("<Opt Declaration List> -> <Declaration List> | <Empty>");
+    if (currentToken.lexeme == "integer" ||
+        currentToken.lexeme == "boolean" ||
+        currentToken.lexeme == "real") {
+            DeclarationList();
+        } else {
+            Empty();
+        }
+}
+void Parser::DeclarationList() {
+    printProduction("<Declaration List> -> <Declaration> <Declaration List> | <Empty>");
+    while (currentToken.lexeme == "integer" ||
+           currentToken.lexeme == "boolean" ||
+           currentToken.lexeme == "real") {
+            Declaration();
+           }
+}
+void Parser::Declaration() {
+    printProduction("<Declaration> -> <Qualifier> <IDs> ;");
+    Qualifier();
+    IDs();
+    match(";");
+}
 void Parser::IDs() {
     printProduction("<IDs> -> identifier <More IDs>");
     matchType("identifier");
