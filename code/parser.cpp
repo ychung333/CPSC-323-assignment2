@@ -108,7 +108,18 @@ void Parser::Function() {}
 void Parser::OptParameterList() {}
 void Parser::ParameterList() {}
 void Parser::Parameter() {}
-void Parser::Qualifier() {}
+void Parser::Qualifier() {
+    printProduction("<Qualifier> -> integer | boolean | real");
+
+    if (currentToken.lexeme == "integer" || 
+        currentToken.lexeme == "boolean" ||
+        currentToken.lexeme == "real") {
+            match(currentToken.lexeme);
+        } else {
+            error("Expected the current token to be either an integer, boolean, or real");
+        }
+
+}
 void Parser::Body() {}
 void Parser::OptDeclarationList() {}
 void Parser::DeclarationList() {}
