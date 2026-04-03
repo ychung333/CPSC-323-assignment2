@@ -107,7 +107,12 @@ void Parser::FunctionDefinitions() {}
 void Parser::Function() {}
 void Parser::OptParameterList() {}
 void Parser::ParameterList() {}
-void Parser::Parameter() {}
+void Parser::Parameter() {
+    printProduction("<Parameter> -> <IDs> <Qualifier>");
+
+    IDs();
+    Qualifier();
+}
 void Parser::Qualifier() {
     printProduction("<Qualifier> -> integer | boolean | real");
 
