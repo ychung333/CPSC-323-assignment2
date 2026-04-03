@@ -250,9 +250,11 @@ void Parser::If() {
     }
 }
 void Parser::Return() {
-    printProduction("<Return> -> return <Expression> ;");
+    printProduction("<Return> -> return <Expression> ; return ;");
     match("return");
-    Expression();
+    if (currentToken.lexeme != ";") {
+        Expression();
+    }
     match(";");
 }
 void Parser::Print() {
