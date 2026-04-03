@@ -338,19 +338,12 @@ void Parser::TermPrime() {
     }
 }
 void Parser::Factor() {
-    printProduction("<Factor> -> <Primary> <FactorPrime>");
-    Primary();
-    FactorPrime();
-}
-void Parser::FactorPrime() {
-    if (currentToken.lexeme == "^") {
-        printProduction("<FactorPrime> -> ^ <Primary> <FactorPrime>");
-        match("^");
+    printProduction("<Factor> -> - <Primary> | <Primary>");
+    if (currentToken.lexeme == "-") {
+        match("-");
         Primary();
-        FactorPrime();
     } else {
-        printProduction("<FactorPrime> -> <Empty>");
-        Empty();
+        Primary();
     }
 }
 void Parser::Primary() {
@@ -362,9 +355,9 @@ void Parser::Primary() {
     } else if (currentToken.type == "identifier") {
         printProduction("<Primary> -> identifier");
         matchType("identifier");
-    } else if (currentToken.type == "number") {
+    } else if (currentToken.type == "integer" || currentToken.type == "real") {
         printProduction("<Primary> -> number");
-        matchType("number");
+        matchType(currentToken.type);
     } else {
         error("Expected primary (identifier, number, or parentheses)");
     }
