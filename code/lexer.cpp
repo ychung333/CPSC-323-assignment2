@@ -214,7 +214,7 @@ Token Lexer::nextToken()
     getChar();
 
     if (lexeme == "(" || lexeme == ")" || lexeme == ";" || lexeme == "{" || lexeme == "}"
-    || lexeme == ",") 
+    || lexeme == "," || lexeme == "@") 
     {
         return {"separator", lexeme};
     }
