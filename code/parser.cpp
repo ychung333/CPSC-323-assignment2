@@ -107,9 +107,16 @@ void Parser::FunctionDefinitions() {}
 void Parser::Function() {}
 void Parser::OptParameterList() {}
 void Parser::ParameterList() {
+    printProduction("<ParameterList> -> <Parameter> | <Parameter> , <ParameterList>");
+    
     Parameter();
 
-    
+    if (currentToken.lexeme == ",") {
+        match(",");
+        ParameterList();
+    }
+
+
 }
 void Parser::Parameter() {
     printProduction("<Parameter> -> <IDs> <Qualifier>");
