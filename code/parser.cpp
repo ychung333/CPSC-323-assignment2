@@ -96,7 +96,13 @@ void Parser::Rat26S()
     match("@");
 }
 
-void Parser::OptFunctionDefinitions() {}
+void Parser::OptFunctionDefinitions() {
+    if (currentToken.lexeme == "function") {
+        FunctionDefinitions();
+    } else {
+        Empty();
+    }
+}
 void Parser::FunctionDefinitions() {}
 void Parser::Function() {}
 void Parser::OptParameterList() {}
@@ -111,7 +117,15 @@ void Parser::IDs() {}
 void Parser::StatementList() {}
 void Parser::Statement() {}
 void Parser::Compound() {}
-void Parser::Assign() {}
+void Parser::Assign()
+{
+    printProduction("<Assign> -> <Identifier> = <Expression> ;");
+    matchType("identifier");
+    match("=");
+
+    Expression();
+    match(";");
+}
 void Parser::If() {}
 void Parser::Return() {}
 void Parser::Print() {}
@@ -125,4 +139,6 @@ void Parser::Term() {}
 void Parser::TermPrime() {}
 void Parser::Factor() {}
 void Parser::Primary() {}
-void Parser::Empty() {}
+void Parser::Empty() {
+    printProduction("<Empty>");
+}
