@@ -1,0 +1,202 @@
+Token: separator          Lexeme: @
+<Rat26S> -> @ <Opt Function Definitions> @ <Opt Declaration List> @ <Statement List> @
+Token: separator          Lexeme: @
+<Opt Function Definitions> -> <Function Definitions> | <Empty>
+<Empty> -> ε
+Token: separator          Lexeme: @
+<Opt Declaration List> -> <Declaration List> | <Empty>
+<Empty> -> ε
+Token: keyword          Lexeme: while
+<Statement List> -> <Statement> <Statement List> | <Empty>
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<While> -> while ( <Condition> ) <Statement>
+Token: separator          Lexeme: (
+Token: identifier          Lexeme: a
+<Condition> -> <Expression> <Relop> <Expression>
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: operator          Lexeme: <
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+<Relop> -> == | != | > | < | >= | <=
+Token: identifier          Lexeme: b
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: separator          Lexeme: )
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: identifier          Lexeme: a
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<Assign> -> <Identifier> = <Expression> ;
+Token: operator          Lexeme: =
+Token: identifier          Lexeme: a
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: operator          Lexeme: +
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> + <Term> <Expression Prime>
+Token: integer          Lexeme: 1
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Integer>
+Token: separator          Lexeme: ;
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: keyword          Lexeme: if
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+Token: separator          Lexeme: (
+Token: identifier          Lexeme: a
+<Condition> -> <Expression> <Relop> <Expression>
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: operator          Lexeme: >=
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+<Relop> -> == | != | > | < | >= | <=
+Token: integer          Lexeme: 10
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Integer>
+Token: separator          Lexeme: )
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: identifier          Lexeme: b
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<Assign> -> <Identifier> = <Expression> ;
+Token: operator          Lexeme: =
+Token: integer          Lexeme: 20
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Integer>
+Token: separator          Lexeme: ;
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: keyword          Lexeme: fi
+<If> -> if ( <Condition> ) <Statement> fi
+Token: identifier          Lexeme: c
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<Assign> -> <Identifier> = <Expression> ;
+Token: operator          Lexeme: =
+Token: real          Lexeme: 23.00
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Real>
+Token: separator          Lexeme: ;
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: identifier          Lexeme: d
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<Assign> -> <Identifier> = <Expression> ;
+Token: operator          Lexeme: =
+Token: identifier          Lexeme: c
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: operator          Lexeme: +
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> + <Term> <Expression Prime>
+Token: integer          Lexeme: 5
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Integer>
+Token: separator          Lexeme: ;
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: keyword          Lexeme: while
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<While> -> while ( <Condition> ) <Statement>
+Token: separator          Lexeme: (
+Token: identifier          Lexeme: d
+<Condition> -> <Expression> <Relop> <Expression>
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: operator          Lexeme: !=
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+<Relop> -> == | != | > | < | >= | <=
+Token: integer          Lexeme: 0
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Integer>
+Token: separator          Lexeme: )
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: identifier          Lexeme: d
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<Assign> -> <Identifier> = <Expression> ;
+Token: operator          Lexeme: =
+Token: identifier          Lexeme: d
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: operator          Lexeme: -
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> - <Term> <Expression Prime>
+Token: integer          Lexeme: 1
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Integer>
+Token: separator          Lexeme: ;
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: identifier          Lexeme: x
+<Statement> -> <Compound> | <Assign> | <If> | <Return> | <Print> | <Scan> | <While>
+<Assign> -> <Identifier> = <Expression> ;
+Token: operator          Lexeme: =
+Token: identifier          Lexeme: a
+<Expression> -> <Term> <Expression Prime>
+<Term> -> <Factor> <Term Prime>
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: operator          Lexeme: *
+<Term Prime> -> * <Factor> <Term Prime>
+Token: identifier          Lexeme: b
+<Factor> -> - <Primary> | <Primary>
+<Primary> -> <Identifier>
+Token: separator          Lexeme: ;
+<Term Prime> -> <Empty>
+<Empty> -> ε
+<Expression Prime> -> <Empty>
+<Empty> -> ε
+Token: separator          Lexeme: @
