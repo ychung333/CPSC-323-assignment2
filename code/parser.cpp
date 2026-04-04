@@ -360,10 +360,13 @@ void Parser::Primary() {
         Expression();
         match(")");
     } else if (currentToken.type == "identifier") {
-        printProduction("<Primary> -> identifier");
+        printProduction("<Primary> -> <Identifier>");
         matchType("identifier");
-    } else if (currentToken.type == "integer" || currentToken.type == "real") {
-        printProduction("<Primary> -> number");
+    } else if (currentToken.type == "integer") {
+        printProduction("<Primary> -> <Integer>");
+        matchType(currentToken.type);
+    } else if(currentToken.type == "real") {
+        printProduction("<Primary> -> <Real>");
         matchType(currentToken.type);
     } else {
         error("Expected primary (identifier, number, or parentheses)");
