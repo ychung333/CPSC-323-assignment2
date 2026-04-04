@@ -41,6 +41,7 @@ private:
     void Compound();
     void Assign();
     void If();
+    void IfPrime();
     void Return();
     void Print();
     void Scan();
@@ -53,6 +54,7 @@ private:
     void TermPrime();
     void Factor();
     void Primary();
+    void PrimaryPrime();
     void Empty();
 
 public:
