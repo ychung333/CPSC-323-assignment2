@@ -2,7 +2,7 @@
 @
 @
 while (a < b) a = a + 1;
-if (a >= 10) b = 20;
+if (a >= 10) b = 20; fi
 c = 23.00;
 d = c + 5;
 while (d != 0) d = d - 1;

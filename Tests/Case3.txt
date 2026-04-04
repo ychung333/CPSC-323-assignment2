@@ -1,3 +1,6 @@
+@
+@
+@
 fahr = 0;
 upper = 300;
 step = 20;
@@ -17,10 +20,11 @@ while (count < 5) {
   count = count + 1;
 }
 
-if (avg >= 100) avg = avg - 5;
-if (avg < 50) avg = avg + 10;
+if (avg >= 100) avg = avg - 5; fi
+if (avg < 50) avg = avg + 10; fi
 
 x = 3.14;
 y = x * 2.0;
 z = y + avg;
 result = z / 4;
+@
