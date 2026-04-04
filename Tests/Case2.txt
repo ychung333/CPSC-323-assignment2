@@ -1,0 +1,15 @@
+fahr = 0;
+upper = 300;
+step = 20;
+
+while (fahr <= upper) {
+  celsius = 5 * (fahr - 32) / 9;
+  fahr = fahr + step;
+}
+
+a = 23.00;
+b = 45.6;
+if (a < b) a = a + 1;
+x = a * b;
+y = x / 2;
+z = y + 10;

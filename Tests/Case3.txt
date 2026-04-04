@@ -1,0 +1,26 @@
+fahr = 0;
+upper = 300;
+step = 20;
+total = 0;
+
+while (fahr <= upper) {
+  celsius = 5 * (fahr - 32) / 9;
+  total = total + celsius;
+  fahr = fahr + step;
+}
+
+avg = total / 10;
+count = 0;
+
+while (count < 5) {
+  avg = avg + count;
+  count = count + 1;
+}
+
+if (avg >= 100) avg = avg - 5;
+if (avg < 50) avg = avg + 10;
+
+x = 3.14;
+y = x * 2.0;
+z = y + avg;
+result = z / 4;
