@@ -237,7 +237,7 @@ void Parser::Assign()
     match(";");
 }
 void Parser::If() {
-    printProduction("<If> -> if ( <Condition> ) <Statement> <Else Part>");
+    
     match("if");
     match("(");
     Condition();
@@ -245,8 +245,13 @@ void Parser::If() {
     Statement();
 
     if (currentToken.lexeme == "otherwise") {
+        printProduction("<If> -> if ( <Condition> ) <Statement> otherwise <Statement> fi");
         match("otherwise");
         Statement();
+        match("fi");
+    } else {
+        printProduction("<If> -> if ( <Condition> ) <Statement> fi>");
+        match("fi");
     }
 }
 void Parser::Return() {
