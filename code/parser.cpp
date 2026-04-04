@@ -127,8 +127,6 @@ void Parser::FunctionDefinitions()
 
 void Parser::Function()
 {
-    // Adjusted to match the grammar pattern you were working from earlier:
-    // function <Identifier> ( <Opt Parameter List> ) <Opt Declaration List> <Body>
     printProduction("<Function> -> function <Identifier> ( <Opt Parameter List> ) <Opt Declaration List> <Body>");
 
     match("function");
@@ -313,23 +311,33 @@ void Parser::Assign()
 
 void Parser::If()
 {
+    printProduction("<If> -> if ( <Condition> ) <Statement> <If Prime>");
+
     match("if");
     match("(");
     Condition();
     match(")");
     Statement();
+    IfPrime();
+}
 
+void Parser::IfPrime()
+{
     if (currentToken.lexeme == "otherwise")
     {
-        printProduction("<If> -> if ( <Condition> ) <Statement> otherwise <Statement> fi");
+        printProduction("<If Prime> -> otherwise <Statement> fi");
         match("otherwise");
         Statement();
         match("fi");
     }
+    else if (currentToken.lexeme == "fi")
+    {
+        printProduction("<If Prime> -> fi");
+        match("fi");
+    }
     else
     {
-        printProduction("<If> -> if ( <Condition> ) <Statement> fi");
-        match("fi");
+        error("Expected 'fi' or 'otherwise'");
     }
 }
 
@@ -387,7 +395,6 @@ void Parser::Condition()
 
 void Parser::Relop()
 {
-    // If your rewritten grammar uses => instead of >=, change ">=" below to "=>"
     printProduction("<Relop> -> == | != | > | < | >= | <=");
 
     if (currentToken.lexeme == "==" ||
@@ -482,22 +489,23 @@ void Parser::Factor()
 
 void Parser::Primary()
 {
-    if (currentToken.lexeme == "(")
+    if (currentToken.type == "identifier")
     {
-        printProduction("<Primary> -> ( <Expression> )");
-        match("(");
-        Expression();
-        match(")");
-    }
-    else if (currentToken.type == "identifier")
-    {
-        printProduction("<Primary> -> <Identifier>");
+        printProduction("<Primary> -> <Identifier> <Primary Prime>");
         matchType("identifier");
+        PrimaryPrime();
     }
     else if (currentToken.type == "integer")
     {
         printProduction("<Primary> -> <Integer>");
         matchType("integer");
+    }
+    else if (currentToken.lexeme == "(")
+    {
+        printProduction("<Primary> -> ( <Expression> )");
+        match("(");
+        Expression();
+        match(")");
     }
     else if (currentToken.type == "real")
     {
@@ -517,6 +525,22 @@ void Parser::Primary()
     else
     {
         error("Expected primary (identifier, integer, real, true, false, or parenthesized expression)");
+    }
+}
+
+void Parser::PrimaryPrime()
+{
+    if (currentToken.lexeme == "(")
+    {
+        printProduction("<Primary Prime> -> ( <IDs> )");
+        match("(");
+        IDs();
+        match(")");
+    }
+    else
+    {
+        printProduction("<Primary Prime> -> <Empty>");
+        Empty();
     }
 }
 
