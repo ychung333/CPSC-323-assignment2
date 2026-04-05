@@ -1,5 +1,11 @@
 @
+function multiply ( a integer, b integer )
+{
+    return a;
+}
 @
+integer a, b, c, d, x;
+real c;
 @
 while (a < b) a = a + 1;
 if (a >= 10) b = 20; fi

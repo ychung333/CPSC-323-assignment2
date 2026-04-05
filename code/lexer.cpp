@@ -11,7 +11,7 @@ using namespace std;
 const unordered_set<string> KEYWORDS = 
 { 
     // using an unordered_set for quick lookup times when checking to see if a word in and because order does not matter a keyword
-    "integer", "if", "otherwise", "fi", "while", "return", "read", "write", "boolean", "real", "true", "false"
+    "integer", "if", "otherwise", "fi", "while", "return", "read", "write", "boolean", "real", "true", "false", "function"
 };
 
 Lexer::Lexer(ifstream& inputFile) : fin(inputFile) 
