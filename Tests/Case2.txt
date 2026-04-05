@@ -1,5 +1,7 @@
 @
 @
+integer fahr, upper, step, x, y, z;
+real a, b, celsius;
 @
 fahr = 0;
 upper = 300;
